@@ -1,0 +1,23 @@
+output/
+logs/
+downloaded_files/
+
+# Python virtual environments
+venv/
+env/
+.venv/
+
+# Python bytecode and cache directories
+__pycache__/
+*.py[cod]
+
+# Local secrets and environment configuration
+.env
+.env.*
+!.env.example
+
+# Editor and operating-system files
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
