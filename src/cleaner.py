@@ -1,5 +1,6 @@
-import csv
-import os
+
+"""Normalize Shopify products into one database-ready row per variant."""
+
 from datetime import datetime
 from typing import Any
 
@@ -50,25 +51,3 @@ def clean_products(raw_products: list[dict[str, Any]]) -> list[dict[str, Any]]:
             })
     logger.info("Cleaned %d variants from %d products", len(rows), len(raw_products))
     return rows
-
-
-def export_to_csv(rows: list[dict[str, Any]], collection_name: str) -> str | None:
-    """Export rows to CSV and return the generated path, or None on failure."""
-    output_dir = "output"
-    filename = f"{collection_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
-    file_path = os.path.join(output_dir, filename)
-    fieldnames = list(rows[0].keys()) if rows else [
-        "scraper_time", "product_id", "product_title", "variant_id", "variant_title",
-        "variant_price", "compare_at_price", "variant_sku", "update_time", "url",
-    ]
-    try:
-        os.makedirs(output_dir, exist_ok=True)
-        with open(file_path, mode="w", newline="", encoding="utf-8-sig") as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames, extrasaction="ignore")
-            writer.writeheader()
-            writer.writerows(rows)
-    except (OSError, csv.Error):
-        logger.exception("Failed to export CSV to %s", file_path)
-        return None
-    logger.info("Exported %d rows to %s", len(rows), file_path)
-    return file_path

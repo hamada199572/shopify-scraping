@@ -1,6 +1,10 @@
-output/
 logs/
 downloaded_files/
+output/
+
+# SQLite Database
+prices.db
+*.db
 
 # Python virtual environments
 venv/
