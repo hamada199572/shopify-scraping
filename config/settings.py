@@ -1,2 +1,2 @@
 
-BASE_DOMAIN = "https://www.allbirds.com"
+BASE_DOMAIN = "https://allbirds.ae"

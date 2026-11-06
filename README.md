@@ -60,19 +60,25 @@ pip install -r requirements.txt
 
 ## Usage
 
-Run from the repository root. The `--collection` argument is optional and defaults to `mens-bestsellers`:
+Run from the repository root to fetch the full store catalog:
 
 ```bash
 python -m src.scraper
 ```
 
-Choose another Shopify collection by passing its handle:
+Fetch one collection by passing its handle:
 
 ```bash
 python -m src.scraper --collection mens-bestsellers
 ```
 
-For example, scrape the `womens-shoes` collection:
+Fetch multiple collections by listing their handles after `--collection`:
+
+```bash
+python -m src.scraper --collection sale mens-shoes womens-shoes
+```
+
+For example, fetch the `womens-shoes` collection only:
 
 ```bash
 python -m src.scraper --collection womens-shoes

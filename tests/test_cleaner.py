@@ -1,6 +1,7 @@
 import unittest
 from unittest.mock import patch
 
+from config.settings import BASE_DOMAIN
 from src.cleaner import clean_products
 
 
@@ -29,7 +30,7 @@ class CleanProductsTests(unittest.TestCase):
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["variant_price"], "129.99")
         self.assertEqual(rows[0]["compare_at_price"], "149.99")
-        self.assertEqual(rows[0]["url"], "https://www.allbirds.com/products/trail-runner")
+        self.assertEqual(rows[0]["url"], f"{BASE_DOMAIN}/products/trail-runner")
         self.assertTrue(rows[0]["update_time"].startswith("2026-11-05 10:00:00"))
 
     def test_skips_malformed_variants(self) -> None:
