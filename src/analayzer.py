@@ -81,7 +81,7 @@ def print_price_tracker_report() -> None:
     changes = detect_price_changes()
     
     if not changes:
-        print("\nNo price changes found. The same variants need at least two recorded snapshots to compare.\n")
+        print("\nNo numeric price changes detected in the stored history.\n")
         return
 
     print("\n" + "=" * 80)
